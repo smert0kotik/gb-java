@@ -14,6 +14,9 @@ public class HomeWorkApp {
         System.out.println(
                 HomeWorkApp.checkBalance(new int[]{1, 2, 3, 4, 2, 8})
         );
+        int[] arr = {1, 2, 3, 4};
+        HomeWorkApp.shift(arr, -2);
+        System.out.println(Arrays.toString(arr));
 
     }
     public static void swapNumbers() {
@@ -84,5 +87,30 @@ public class HomeWorkApp {
         }
 
         return left == right;
+    }
+    public static void shift(int[] arr, int n) {
+        int x = Math.abs(n % arr.length);
+        int y = 0;
+        if (n > 0) {
+            while (x != 0) {
+                int t = arr.length - x;
+                int swap = arr[t];
+                arr[t] = arr[y];
+                arr[y] = swap;
+                x = x - 1;
+                y = y + 1;
+            }
+
+        } else {
+            while (x != 0) {
+                int t = x - 1;
+                int swap = arr[t];
+                arr[t] = arr[arr.length - y - 1];
+                arr[arr.length - y - 1] = swap;
+                x = x - 1;
+                y = y + 1;
+            }
+
+        }
     }
 }
